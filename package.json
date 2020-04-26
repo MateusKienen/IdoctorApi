@@ -1,0 +1,26 @@
+{
+  "name": "idoctorapi",
+  "version": "1.0.0",
+  "description": "Api usada para conectar o idoctor ao banco",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MateusKienen/IdoctorApi.git"
+  },
+  "author": "Mateus Kienen - O brabo!",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MateusKienen/IdoctorApi/issues"
+  },
+  "homepage": "https://github.com/MateusKienen/IdoctorApi#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6"
+  }
+}
