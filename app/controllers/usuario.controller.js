@@ -22,11 +22,15 @@ exports.create = (req, res) => {
   // Insert user in db
   Usuario.create(usuario)
     .then((data) => {
-      res.send(data);
+      res.send({
+        message: "1",
+        status: "Success",
+      });
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Ocorreu um erro na inserção do usuário",
+        message: "-1",
+        status: "Erro ao inserir usuário " + err,
       });
     });
 };

@@ -14,10 +14,17 @@ module.exports = (sequelize, Sequelize) => {
     email: {
       type: Sequelize.STRING,
     },
-    ativo:{
+    ativo: {
       type: Sequelize.BOOLEAN,
-    }
+    },
   });
+
+  Usuario.associate = function (models) {
+    Usuario.hasMany(models.alergias, {
+      foreingKey: "id",
+      sourceKey: "alergiaId",
+    });
+  };
 
   return Usuario;
 };

@@ -5,52 +5,67 @@ const Op = db.Sequelize.Op;
 //create
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.nome) {
-    res.status(400).send({
-      message: "O campo não pode ser vazio",
-    });
-    return;
-  }
+  // if (!req.body.nome && !req.body.) {
+  //   res.status(400).send({
+  //     message: "O campo não pode ser vazio",
+  //   });
+  //   return;
+  // }
 
   // Create object
   const alergia = {
-    nome: req.body.nome,
-    senha: req.body.senha,
-    email: req.body.email,
+    descricao: req.body.descricao,
+    observacao: req.body.observacao,
+    dt_alergia: req.body.dt_alergia,
+    usuario_id: req.body.usuario_id,
   };
 
   // Insert user in db
   Alergia.create(alergia)
     .then((data) => {
-      res.send(data);
+      res.send({
+        message: "1",
+        status: "Success",
+      });
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Ocorreu um erro na inserção do usuário",
+        message: "-1",
+        status: "Erro ao inserir registro" + err,
       });
     });
 };
 
-// Get all users
 exports.findAllByUserId = (req, res) => {
-  const zid_usuario = req.query.id_usuario;
-
-  Alergia.findAll({ where: { id_usuario: { [Op.eq]: zid_usuario } } })
+  // if (!req.params.id) {
+  //   res.status(400).send({
+  //     message: "É necessário passar o id do usuário",
+  //   });
+  //   return;
+  // }
+  const zid_usuario = req.params.id;
+  
+  Alergia.findAll({
+    where: {
+      usuario_id: {
+        [Op.eq]: zid_usuario,
+      },
+    },
+  })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Ocorreu um erro na busca das alergias",
+        message: err.message || "Ocorreu um erro na busca do registro",
       });
     });
 };
 
-// Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Usuario.update(req.body, {
+  Alergia.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -62,14 +77,14 @@ exports.update = (req, res) => {
       } else {
         res.send({
           message: "0",
-          status: "Usuário não foi encontrado",
+          status: "Registro não foi encontrado",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
         message: "-1",
-        status: "Erro ao atualizar usuário " + err,
+        status: "Erro ao atualizar registro " + err,
       });
     });
 };
