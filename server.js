@@ -38,6 +38,7 @@ require("./app/routes/medicamentos.routes")(app);
 require("./app/routes/infoBasicas.routes")(app);
 require("./app/routes/cirurgias.routes")(app);
 require("./app/routes/doencas.routes")(app);
+require("./app/routes/auth.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
