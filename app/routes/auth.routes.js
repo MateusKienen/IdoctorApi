@@ -3,7 +3,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    router.get("/", usuario.authenticate);
+    router.post("/", usuario.authenticate);
   
     app.use('/api/auth', router);
   };
