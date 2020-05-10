@@ -39,7 +39,7 @@ exports.create = (req, res) => {
 exports.findAllByUserId = (req, res) => {
   const zid_usuario = req.params.id;
 
-  Alergia.findAll({
+  Cirurgia.findAll({
     where: {
       usuario_id: { [Op.eq]: zid_usuario },
     },

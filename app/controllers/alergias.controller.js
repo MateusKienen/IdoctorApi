@@ -4,14 +4,6 @@ const Op = db.Sequelize.Op;
 
 //create
 exports.create = (req, res) => {
-  // Validate request
-  // if (!req.body.nome && !req.body.) {
-  //   res.status(400).send({
-  //     message: "O campo não pode ser vazio",
-  //   });
-  //   return;
-  // }
-
   // Create object
   const alergia = {
     descricao: req.body.descricao,
@@ -37,12 +29,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAllByUserId = (req, res) => {
-  // if (!req.params.id) {
-  //   res.status(400).send({
-  //     message: "É necessário passar o id do usuário",
-  //   });
-  //   return;
-  // }
+
   const zid_usuario = req.params.id;
   
   Alergia.findAll({

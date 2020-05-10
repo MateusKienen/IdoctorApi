@@ -21,7 +21,7 @@ exports.create = (req, res) => {
   };
 
   // Insert user in db
-  Alergia.create(doenca)
+  Doenca.create(doenca)
     .then((data) => {
       res.send({
         message: "1",
@@ -39,7 +39,7 @@ exports.create = (req, res) => {
 exports.findAllByUserId = (req, res) => {
   const zid_usuario = req.params.id;
 
-  Alergia.findAll({ where: { usuario_id: { [Op.eq]: zid_usuario } } })
+  Doenca.findAll({ where: { usuario_id: { [Op.eq]: zid_usuario } } })
     .then((data) => {
       res.send(data);
     })
@@ -53,7 +53,7 @@ exports.findAllByUserId = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Alergia.update(req.body, {
+  Doenca.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
