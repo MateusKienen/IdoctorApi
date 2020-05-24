@@ -102,6 +102,6 @@ exports.authenticate = (req, res) => {
   if (user == null) {
     res.status(500).send({ message: "Not found" });
   } else {
-    res.status(200).send({ id: user.id });
+    res.status(200).send(user);
   }
 };
