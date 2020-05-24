@@ -96,12 +96,15 @@ exports.update = (req, res) => {
 
 //usado por outra rota..... /auth
 exports.authenticate = (req, res) => {
-  const user = Usuario.findOne({
+  Usuario.findOne({
     where: { [Op.and]: [{ email: req.body.email }, { senha: req.body.senha }] },
-  });
-  if (user == null) {
-    res.status(500).send({ message: "Not found" });
-  } else {
-    res.status(200).send(user);
-  }
+  })
+    .then((data) => {
+      res.send(data.id);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Ocorreu um erro",
+      });
+    });
 };
