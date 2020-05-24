@@ -100,7 +100,7 @@ exports.authenticate = (req, res) => {
     where: { [Op.and]: [{ email: req.body.email }, { senha: req.body.senha }] },
   })
     .then((data) => {
-      res.send(data.id);
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
