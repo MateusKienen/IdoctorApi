@@ -104,7 +104,7 @@ exports.authenticate = (req, res) => {
         res.send(data);
       }
       else {
-        res.status(400).send( message = "usuário inexistente" );
+        res.status(404).send( message = "usuário inexistente" );
       }
     })
     .catch((err) => {
