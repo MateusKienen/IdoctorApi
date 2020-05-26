@@ -104,7 +104,11 @@ exports.authenticate = (req, res) => {
         res.send(data);
       }
       else {
-        res.send(new Usuario);
+        res.send( usuario = {
+          nome: req.body.nome,
+          senha: req.body.senha,
+          email: req.body.email,
+        });
       }
     })
     .catch((err) => {
