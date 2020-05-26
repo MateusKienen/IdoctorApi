@@ -104,11 +104,7 @@ exports.authenticate = (req, res) => {
         res.send(data);
       }
       else {
-        res.send( usuario = {
-          nome: req.body.nome,
-          senha: req.body.senha,
-          email: req.body.email,
-        });
+        res.status(400).send( message = "usuário inexistente" );
       }
     })
     .catch((err) => {
