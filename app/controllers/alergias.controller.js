@@ -51,27 +51,48 @@ exports.findAllByUserId = (req, res) => {
 
 exports.update = (req, res) => {
   const id = req.params.id;
+  const alergiaId = req.params.idalergia;
 
   Alergia.update(req.body, {
     where: { id: id },
   })
-    .then((num) => {
-      if (num == 1) {
-        res.send({
-          message: "1",
-          status: "success",
-        });
-      } else {
-        res.send({
-          message: "0",
-          status: "Registro não foi encontrado",
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "-1",
-        status: "Erro ao atualizar registro " + err,
-      });
+  .then((data) => {
+    res.send(data);
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: err.message || "Ocorreu um erro na busca do registro",
     });
+  });
+};
+
+
+exports.delete = (req, res) => {
+  const user_id = req.params.id;
+  const idalergia = req.params.idalergia;
+
+  Alergia.destroy({
+    where: {
+      id: idalergia,
+      usuario_id: user_id
+    }
+  }).then((num) => {
+    if (num == 1) {
+      res.send({
+        message: "1",
+        status: "success",
+      });
+    } else {
+      res.send({
+        message: "0",
+        status: "Registro não foi encontrado",
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: "-1",
+      status: "Erro ao atualizar registro " + err,
+    });
+  });
 };

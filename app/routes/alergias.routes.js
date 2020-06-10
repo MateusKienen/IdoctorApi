@@ -7,7 +7,9 @@ module.exports = app => {
   
     router.get("/:id", alergia.findAllByUserId);
     
-    router.put("/:id", alergia.update);
+    router.put("/:id/:idalergia", alergia.update);
   
+    router.delete("/:id&:idalergia", alergia.delete);
+
     app.use('/api/alergia', router);
   };
