@@ -16,6 +16,7 @@ exports.create = (req, res) => {
   const infos = {
     tipo_sang: req.body.tipo_sang,
     peso: req.body.peso,
+    altura: req.body.altura,
     imc: req.body.imc,
     cpf: req.body.cpf,
     rg: req.body.rg,

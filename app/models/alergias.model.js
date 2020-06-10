@@ -19,6 +19,7 @@ module.exports = (sequelize, Sequelize) => {
       references: {
         model: 'Usuarios',
         key: "id",
+        autoIncrement: true
       },
     },
   });
