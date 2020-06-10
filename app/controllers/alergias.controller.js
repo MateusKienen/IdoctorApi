@@ -51,7 +51,6 @@ exports.findAllByUserId = (req, res) => {
 
 exports.update = (req, res) => {
   const id = req.params.id;
-  const alergiaId = req.params.idalergia;
 
   Alergia.update(req.body, {
     where: { id: id },
