@@ -9,7 +9,7 @@ module.exports = app => {
     
     router.put("/:id", cirurgia.update);
 
-    router.delete("/:id&:idcirurgia", alergia.delete);
+    router.delete("/:id&:idcirurgia", cirurgia.delete);
   
     app.use('/api/cirurgia', router);
   };
