@@ -7,7 +7,7 @@ module.exports = app => {
   
     router.get("/:id", alergia.findAllByUserId);
     
-    router.put("/:id/:idalergia", alergia.update);
+    router.put("/:id", alergia.update);
   
     router.delete("/:id&:idalergia", alergia.delete);
 
