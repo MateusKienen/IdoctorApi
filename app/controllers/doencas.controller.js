@@ -76,3 +76,33 @@ exports.update = (req, res) => {
       });
     });
 };
+
+exports.delete = (req, res) => {
+  const user_id = req.params.id;
+  const iddoenca = req.params.iddoenca;
+
+  Alergia.destroy({
+    where: {
+      id: iddoenca,
+      usuario_id: user_id
+    }
+  }).then((num) => {
+    if (num == 1) {
+      res.send({
+        message: "1",
+        status: "success",
+      });
+    } else {
+      res.send({
+        message: "0",
+        status: "Registro não foi encontrado",
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: "-1",
+      status: "Erro ao atualizar registro " + err,
+    });
+  });
+};

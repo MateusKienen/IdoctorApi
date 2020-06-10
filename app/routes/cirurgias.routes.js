@@ -8,6 +8,8 @@ module.exports = app => {
     router.get("/:id", cirurgia.findAllByUserId);
     
     router.put("/:id", cirurgia.update);
+
+    router.delete("/:id&:idcirurgia", alergia.delete);
   
     app.use('/api/cirurgia', router);
   };
