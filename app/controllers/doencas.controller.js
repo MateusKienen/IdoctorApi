@@ -81,7 +81,7 @@ exports.delete = (req, res) => {
   const user_id = req.params.id;
   const iddoenca = req.params.iddoenca;
 
-  Alergia.destroy({
+  Doenca.destroy({
     where: {
       id: iddoenca,
       usuario_id: user_id
@@ -100,7 +100,7 @@ exports.delete = (req, res) => {
     }
   })
   .catch((err) => {
-    res.status(200).send({
+    res.status(500).send({
       message: "-1",
       status: "Erro ao atualizar registro " + err,
     });
