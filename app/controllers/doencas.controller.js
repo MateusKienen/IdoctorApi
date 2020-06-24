@@ -100,7 +100,7 @@ exports.delete = (req, res) => {
     }
   })
   .catch((err) => {
-    res.status(500).send({
+    res.status(200).send({
       message: "-1",
       status: "Erro ao atualizar registro " + err,
     });
