@@ -60,9 +60,8 @@ exports.findAllByUserId = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  InfosBasicas.update(req.body, {
-    where: { id: id },
-  })
+  //{ where: { usuario_id: { [Op.eq]: zid_usuario } } }
+  InfosBasicas.update(req.body, { where: { usuario_id: { [Op.eq]: zid_usuario } } })
     .then((num) => {
       if (num == 1) {
         res.send({
