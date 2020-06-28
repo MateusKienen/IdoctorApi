@@ -100,11 +100,28 @@ exports.authenticate = (req, res) => {
     where: { [Op.and]: [{ email: req.body.email }, { senha: req.body.senha }] },
   })
     .then((data) => {
-      if (data != null){
+      if (data != null) {
         res.send(data);
+      } else {
+        res.status(404).send({ message: "usuário inexistente", status: "-1" });
       }
-      else {
-        res.status(404).send( {message: "usuário inexistente", status: "-1"});
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Ocorreu um erro",
+      });
+    });
+};
+
+exports.delete = (req, res) => {
+  Usuario.destroy({
+    where: { id: req.params.id },
+  })
+    .then((data) => {
+      if (data != null) {
+        res.send(data);
+      } else {
+        res.status(404).send({ message: "usuário inexistente", status: "-1" });
       }
     })
     .catch((err) => {
