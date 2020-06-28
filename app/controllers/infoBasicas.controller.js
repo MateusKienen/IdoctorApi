@@ -58,10 +58,14 @@ exports.findAllByUserId = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const id_user = req.params.id;
 
   //{ where: { usuario_id: { [Op.eq]: zid_usuario } } }
-  InfosBasicas.update(req.body, { where: { usuario_id: { [Op.eq]: zid_usuario } } })
+  InfosBasicas.update(req.body, {
+    where: {
+      usuario_id: id_user,
+    },
+  })
     .then((num) => {
       if (num == 1) {
         res.send({
@@ -82,4 +86,3 @@ exports.update = (req, res) => {
       });
     });
 };
-
