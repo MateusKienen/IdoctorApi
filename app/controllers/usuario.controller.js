@@ -116,7 +116,7 @@ exports.authenticate = (req, res) => {
 exports.delete = (req, res) => {
   Usuario.update(
     {email: 'usuarioexcluido@usuarioexcluido.com.br' }, 
-    { where: { id: id },
+    { where: { id: req.params.id },
   })
     .then((num) => {
       if (num == 1) {
