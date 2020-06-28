@@ -17,6 +17,7 @@ exports.create = (req, res) => {
     descricao: req.body.descricao,
     observacao: req.body.observacao,
     dosagem: req.body.dosagem,
+    tipo_dosagem: req.body.tipo_dosagem,
     dt_inicio: req.body.dt_inicio,
     dt_fim: req.body.dt_fim,
     usuario_id: req.body.usuario_id,

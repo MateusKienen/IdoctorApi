@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
       dosagem: {
         type: Sequelize.STRING,
       },
+      tipo_dosagem:{
+        type: Sequelize.INTEGER,
+      },
       dt_inicio: {
         type: Sequelize.DATE,
       },
