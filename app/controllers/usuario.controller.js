@@ -114,19 +114,27 @@ exports.authenticate = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Usuario.destroy({
-    where: { id: req.params.id },
+  Usuario.update(
+    {email: 'usuarioexcluido@usuarioexcluido.com.br' }, 
+    { where: { id: id },
   })
-    .then((data) => {
-      if (data != null) {
-        res.send(data);
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "1",
+          status: "success",
+        });
       } else {
-        res.status(404).send({ message: "usuário inexistente", status: "-1" });
+        res.send({
+          message: "0",
+          status: "Usuário não foi encontrado",
+        });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Ocorreu um erro",
+        message: "-1",
+        status: "Erro ao atualizar usuário " + err,
       });
     });
 };

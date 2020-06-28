@@ -18,13 +18,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
     },
   });
-
-  Usuario.associate = function (models) {
-    Usuario.hasMany(models.alergias, {
-      foreingKey: "id",
-      sourceKey: "alergiaId",
-    });
-  };
-
   return Usuario;
 };
